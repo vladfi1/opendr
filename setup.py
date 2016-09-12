@@ -4,8 +4,7 @@ Author(s): Matthew Loper
 See LICENCE.txt for licensing and contact information.
 """
 
-from setuptools import setup
-from distutils.extension import Extension
+from setuptools import setup, Extension
 import numpy
 import platform
 import os
@@ -17,14 +16,6 @@ try:
 except:
     cythonize = lambda x : x
     have_cython = False
-
-
-# setuptools DWIM monkey-patch madness
-# http://mail.python.org/pipermail/distutils-sig/2007-September/thread.html#8204
-import sys
-if 'setuptools.extension' in sys.modules:
-    m = sys.modules['setuptools.extension']
-    m.Extension.__dict__ = m._Extension.__dict__
 
 context_dir = os.path.join(os.path.dirname(__file__), 'contexts')
 
